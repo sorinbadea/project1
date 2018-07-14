@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box}
+
+hr {
+    border: 2px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* Add padding to container elements */
+.container {
+    padding: 16px;
+}
+
+.container_right {
+    padding: 16px;
+    float:right;
+}
+
+.btn_logout {
+  background-color: #f4511e;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+.btn_logout:hover {opacity: 1}
+
+</style>
+<body>
+
+  <div class="container">
+    <h1>Welcome <%= fullname %></h1>
+    <h1>Last login <%= lastlogin %></h1>
+  </div>
+  <hr>
+  <div class="container_right">
+    <form action="/logout" method="get">
+       <button class="btn_logout" type="submit">Logout</button>
+    </form>
+  </div>
+
+</body>
+</html>
+
