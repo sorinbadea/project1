@@ -30,7 +30,11 @@ app.use(cookieParser());
 
 //Define request response in root URL (/)
 app.get('/logout', function (req, res) {
+    // free cookies
     res.cookie('email', "", {expires:new Date(0)})
+    res.cookie('first_name', "", {expires:new Date(0)})
+    res.cookie('last_name', "", {expires:new Date(0)})
+    res.cookie('last_login', "", {expires:new Date(0)})
     res.render('index.ejs', {})
 });
 

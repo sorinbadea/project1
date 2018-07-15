@@ -1,7 +1,11 @@
 var crypto = require('crypto');
 var dbi = require('./database.js');
 
+
+//dbi.update_last_login("sorin.badea@gmail.com");
 dbi.find_all_users(dbi.do_get_all_users);
+
+
 //var result = hash.crypt_password('sorin', hash.do_crypt_password);
 //console.log(result);
 
