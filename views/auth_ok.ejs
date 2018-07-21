@@ -40,7 +40,7 @@ body {margin:0; font-family: 'ABeeZee'}
 
 .blog-img {
   padding:16px;
-  width:30%;
+  width:29%;
   border-color: gray;
   border-style: dotted;
   float:left;
@@ -49,20 +49,19 @@ body {margin:0; font-family: 'ABeeZee'}
 .blog-head {
   float:left;
   padding:16px;
-  border-color: gray;
-  border-style: dotted;
 }
 
 .blog-right {
-  float:left;
+  float:right;
+  padding:8px;
+  color:white;
 } 
 
 .topnav {
   padding:8px;
   overflow: hidden;
   background-color: #444;
-  border-color: gray;
-  border-style: dotted;
+  width:94%;
 }
 
 .topnav a {
@@ -90,7 +89,6 @@ body {margin:0; font-family: 'ABeeZee'}
 <div class="main">
   <div class="blog-head">
     <h2>Welcome <%= fullname %></h2>
-    <h4>Last login<%= lastlogin %></h4>
   </div>
 </div>
 
@@ -103,6 +101,9 @@ body {margin:0; font-family: 'ABeeZee'}
     <form action="/logout" method="get">
       <button class="btn_logout" type="submit">Logout</button>
     </form>
+  </div>
+  <div class="blog-right">
+  <h5>Last login<%= lastlogin %></h5>
   </div>
 
 </div>
