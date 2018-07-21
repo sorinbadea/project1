@@ -4,87 +4,118 @@
 <link href='https://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet'>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body {margin:0; font-family: 'ABeeZee';}
-
-hr {
-    border: 2px solid #f1f1f1;
-    margin-bottom: 25px;
+img {
+    width: 100%;
+    height: auto;
 }
-
-.container_right {
-    float:right;
-}
+body {margin:0; font-family: 'ABeeZee'}
 
 .btn_logout {
   background-color: #f4511e;
   border: none;
   color: white;
-  padding: 16px 20px;
+  padding: 14px 16px;
   text-align: center;
   font-size: 16px;
-  margin: 4px 16px;
   opacity: 0.6;
-  transition: 0.3s;
+  transition: 0.2s;
+  float:right;
 }
 
 .btn_logout:hover {opacity: 1}
 
-.navbar {
-  overflow: hidden;
-  background-color:  #4CAF50;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 8px;
+.main::after {
+    content: "";
+    clear: both;
+    display: table;
 }
 
-.navbar a {
+.blog-text {
+  padding: 16px;
+  width:60%;
+  border-color: gray;
+  border-style: dotted;
+  float:left;
+}
+
+.blog-img {
+  padding:16px;
+  width:30%;
+  border-color: gray;
+  border-style: dotted;
+  float:left;
+}
+
+.blog-head {
+  float:left;
+  padding:16px;
+  border-color: gray;
+  border-style: dotted;
+}
+
+.blog-right {
+  float:left;
+} 
+
+.topnav {
+  padding:8px;
+  overflow: hidden;
+  background-color: #444;
+  border-color: gray;
+  border-style: dotted;
+}
+
+.topnav a {
   float: left;
-  display: block;
   color: #f2f2f2;
-  text-align: center;
+  text-align: left;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
 }
 
-.navbar a:hover {
-  background: #ddd;
+.topnav a:hover {
+  background-color: #ddd;
   color: black;
 }
 
-.main {
-  padding: 16px;
-  margin-top: 70px;
-  height: 1500px; /* Used in this example to enable scrolling */
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
 }
+
 </head>
 </style>
 <body>
-
-  <div class="navbar">
-     <a href="#home">Home</a>
-     <a href="#news">News</a>
-     <a href="#contact">Contact</a>
-     <div class="container_right">
-       <form action="/logout" method="get">
-         <button class="btn_logout" type="submit">Logout</button>
-       </form>
-     </div>
-  </div>
-  <div class="main">
+<div class="main">
+  <div class="blog-head">
     <h2>Welcome <%= fullname %></h2>
-    <h2>Last login <%= lastlogin %></h2>
-    <hr>
-    Lorem ipsum dolor sit amet, quis noster corpora quo at, cum an dicit offendit principes, ei probo mucius adolescens sed. No oblique feugiat vim, adhuc laboramus reformidans nam ne.<br> Pri definiebas complectitur eu, facilis tacimates mediocrem ei eum. Vel quaeque denique ut, id nec alia eirmod omittantur. Ei nec petentium scribentur. Cu his fabellas maiestatis philosophia, agam recusabo et pri, no nec tale erroribus inciderint.
-    <p>
-Vix an accusam eloquentiam necessitatibus, ridens alterum intellegam id sit. Iusto dolorem civibus in sea. An pro quidam legimus maiestatis. Eam affert tation torquatos ex, pri velit causae saperet eu. No verterem tractatos scripserit ius.
-<p>
-In omnis equidem dissentiunt sea, electram consulatu reprehendunt nam ex, in eam iuvaret similique rationibus. No ridens oblique constituto vel. Et eum nullam similique, ferri atomorum periculis ad qui. Ut appareat postulant has, putent essent ei eum. Cibo congue vim ne, eam meliore senserit cu.
-<p>
-Ius te quodsi offendit, his an admodum adipiscing argumentum, vim alienum ullamcorper id. An his lorem quaestio petentium, integre adipisci definiebas his ex. Eu deserunt assueverit philosophia qui, eam ea habeo delicata. Cu nam odio fabulas pertinax, eu libris instructior his. Sit saperet omittantur et, movet sanctus phaedrum pro an. Quod dolorem vituperata et sed.
-<p>
-Duo at alia ocurreret torquatos, alia repudiare eu eum. In sit legere ridens fabulas, appetere efficiantur eum an, nihil torquatos concludaturque an mel. In idque eloquentiam nam. In sea dictas fabulas accumsan.
+    <h4>Last login<%= lastlogin %></h4>
+  </div>
+</div>
+
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="#news">News</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+  <div class="blog-right">
+    <form action="/logout" method="get">
+      <button class="btn_logout" type="submit">Logout</button>
+    </form>
+  </div>
+
+</div>
+<div class="main">
+  <div class="blog-text">
+    <h2>Some nice header here</h2>
+    Lorem ipsum dolor sit amet, quis noster corpora quo at, cum an dicit offendit principes, ei probo mucius adolescens sed. No oblique feugiat vim, adhuc laboramus reformidans nam ne.<br> Pri definiebas complectitur eu, facilis tacimates mediocrem ei eum. Vel quaeque denique ut, id nec alia eirmod omittantur. Ei nec petentium scribentur. Cu his fabellas maiestatis philosophia, agam recusabo et pri, no nec tale erroribus inciderint. Vix an accusam eloquentiam necessitatibus, ridens alterum intellegam id sit. Iusto dolorem civibus in sea. An pro quidam legimus maiestatis. Eam affert tation torquatos ex, pri velit causae saperet eu. No verterem tractatos scripserit ius.
+In omnis equidem dissentiunt sea, electram consulatu reprehendunt nam ex, in eam iuvaret similique rationibus. No ridens oblique constituto vel. Et eum nullam similique, ferri atomorum periculis ad qui. Ut appareat postulant has, putent essent ei eum. Cibo congue vim ne, eam meliore senserit cu. Ius te quodsi offendit, his an admodum adipiscing argumentum, vim alienum ullamcorper id. An his lorem quaestio petentium, integre adipisci definiebas his ex. Eu deserunt assueverit philosophia qui, eam ea habeo delicata. Cu nam odio fabulas pertinax, eu libris instructior his. Sit saperet omittantur et, movet sanctus phaedrum pro an. Quod dolorem vituperata et sed.
+Duo at alia ocurreret torquatos, alia repudiare eu eum. In sit legere ridens fabulas, appetere efficiantur eum an, nihil torquatos concludaturque an mel. In idque eloquentiam nam. In sea dictas fabulas accumsan.Lorem ipsum dolor sit amet, quis noster corpora quo at, cum an dicit offendit principes, ei probo mucius adolescens sed. No oblique feugiat vim, adhuc laboramus reformidans nam ne. Pri definiebas complectitur eu, facilis tacimates mediocrem ei eum. Vel quaeque denique ut, id nec alia eirmod omittantur. Ei nec petentium scribentur. Cu his fabellas maiestatis philosophia, agam recusabo et pri, no nec tale erroribus inciderint. Vix an accusam eloquentiam necessitatibus, ridens alterum intellegam id sit. Iusto dolorem civibus in sea. An pro quidam legimus maiestatis. Eam affert tation torquatos ex, pri velit causae saperet eu. No verterem tractatos scripserit ius. In sit legere ridens fabulas, appetere efficiantur eum an, nihil torquatos concludaturque an mel. In idque eloquentiam nam. In sea dictas fabulas accumsan.Lorem ipsum dolor sit amet, quis noster corpora quo at, cum an dicit offendit principes, ei probo mucius adolescens sed. No oblique feugiat vim, adhuc laboramus reformidans nam ne. Pri definiebas complectitur eu, facilis tacimates mediocrem ei eum. Vel quaeque denique ut, id nec alia eirmod omittantur. Ei nec petentium scribentur. Cu his fabellas maiestatis philosophia, agam recusabo et pri, no nec tale erroribus inciderint. Vix an accusam eloquentiam necessitatibus, ridens alterum intellegam id sit. Iusto dolorem civibus in sea. An pro quidam legimus maiestatis.
+  </div>
+  <div class="blog-img">
+    <img src="images/img_avatar.png" alt=Avatar>
+  </div>
 </div>
 </body>
 </html>

@@ -27,6 +27,7 @@ app.use(session({ secret: 'km5(lk%%µKGHIY89%µiOOnnhqn"#',
 }))
 
 app.use(cookieParser());
+app.use('/images', express.static(__dirname + "/images"));
 
 //Define request response in root URL (/)
 app.get('/logout', function (req, res) {
