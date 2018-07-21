@@ -56,8 +56,18 @@ app.get('/', function (req, res) {
 
 //Define login request in root URL (/login_user)
 app.post('/login_user', function(req, res) {
-   var pass = crypto.pbkdf2Sync(req.body.password, salt, 1000, 64, `sha512`).toString(`hex`)
-   dbi.auth_a_user(dbi.do_auth_a_user, req.body.email, pass, res)
+   var is_auth = req.cookies.email;
+   console.log('web.js auth token:' + is_auth)
+   if (is_auth) {
+      var first_name = req.cookies.first_name
+      var last_name  = req.cookies.last_name
+      var last_login = req.cookies.last_login
+      res.render('auth_ok.ejs',{fullname:first_name +' ' + last_name, lastlogin:last_login})
+   } 
+   else {
+      var pass = crypto.pbkdf2Sync(req.body.password, salt, 1000, 64, `sha512`).toString(`hex`)
+      dbi.auth_a_user(dbi.do_auth_a_user, req.body.email, pass, res)
+   }
 });
 
 //Define signup request in root URL (/signup)
