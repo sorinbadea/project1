@@ -54,6 +54,22 @@ app.get('/', function (req, res) {
    }
 });
 
+//Define select request in root URL (/login_user)
+app.get('/select', function(req, res) {
+   var is_auth = req.cookies.email;
+   console.log('web.js auth token:' + is_auth)
+   if (is_auth) {
+      var first_name = req.cookies.first_name
+      var last_name  = req.cookies.last_name
+      var last_login = req.cookies.last_login
+      res.render('select2.ejs',{fullname:first_name +' ' + last_name, lastlogin:last_login})
+   }
+   else {
+      res.render('index.ejs', {})	   
+   }
+});
+
+
 //Define login request in root URL (/login_user)
 app.post('/login_user', function(req, res) {
    var is_auth = req.cookies.email;
