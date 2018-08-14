@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!--<link href='https://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet'>-->
+<link href='https://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet'>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 img {
@@ -63,11 +63,12 @@ body {margin:0; font-family: 'ABeeZee'}
 /* site 2 */
 .blog-text-site2 {
   padding: 16px;
-  width:97%;
+  width:95%;
   border-color: gray;
   border-style: dotted;
   float:left;
   font-size:medium;
+  margin:20px;
 }
 
 .text-container {
@@ -154,13 +155,13 @@ img.img-container {
 .close:focus {
     color: #000;
     text-decoration: none;
-    cursor: pointer;
+    cursor:pointer;
 }
 .save:hover,
 .save:focus {
     color: #000;
     text-decoration: none;
-    cursor: pointer;
+    cursor:pointer;
 }
 
 
@@ -220,7 +221,18 @@ In omnis equidem dissentiunt sea, electram consulatu reprehendunt nam ex, in eam
 Duo at alia ocurreret torquatos, alia repudiare eu eum. In sit legere ridens fabulas, appetere efficiantur eum an, nihil torquatos concludaturque an mel. In idque eloquentiam nam. In sea dictas fabulas accumsan.Lorem ipsum dolor sit amet, quis noster corpora quo at, cum an dicit offendit principes, ei probo mucius adolescens sed.In omnis equidem dissentiunt sea, electram consulatu reprehendunt nam ex, in eam iuvaret similique rationibus. No ridens oblique constituto vel. Et eum nullam similique, ferri atomorum periculis ad qui. Ut appareat postulant has, putent essent ei eum. Cibo congue vim ne, eam meliore senserit cu. Ius te quodsi offendit, his an admodum adipiscing argumentum, vim alienum ullamcorper id. An his lorem quaestio petentium, integre adipisci definiebas his ex. Eu deserunt assueverit philosophia qui, eam ea habeo delicata. Cu nam odio fabulas pertinax, eu libris instructior his. Sit saperet omittantur et, movet sanctus phaedrum pro an. Quod dolorem vituperata et sed.
 Duo at alia ocurreret torquatos, alia repudiare eu eum. In sit legere ridens fabulas, appetere efficiantur eum an, nihil torquatos concludaturque an mel. In idque eloquentiam nam. In sea dictas fabulas accumsan.Lorem ipsum dolor sit amet, quis noster corpora quo at, cum an dicit offendit principes, ei probo mucius adolescens sed.
   <div class=select>
-    <a href="/select?model=1">Edit</a>
+    <button id="myBtn2">Edit</button>
+    <!-- The Modal -->
+    <div id="myModal2" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+         <span class="close">close</span>
+         <span class="save">save</span>
+         <form>
+           <textarea>Some text...</textarea>
+         </form>
+      </div>
+    </div>
   </div>
 </div>
 
