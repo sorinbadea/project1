@@ -101,6 +101,23 @@ app.get('/signup', function (req, res) {
    }
 });
 
+//when the user edit the header text
+app.get('/edit-header', function (req, res) {
+   var is_auth = req.cookies.email
+   var first_name = req.cookies.first_name
+   var last_name = req.cookies.last_name
+   var last_login = req.cookies.last_login
+   if (is_auth) {
+     console.log('web.js, edit-header, auth token:' + is_auth)
+     res.setHeader('Content-Type','text/html')
+     //res.write('<div id="modal-surface"><textarea>Coucou</textarea></div>')
+     res.write('<textarea>Coucou</textarea>')
+     res.end()
+   }else {
+     console.log("web.js, edit-header, user not authenticated")
+   }
+});
+
 app.post('/create_user', function(req, res) {
   var pass = crypto.pbkdf2Sync(req.body.password, salt, 1000, 64, `sha512`).toString(`hex`);
   dbi.insert_a_user(dbi.do_insert_a_user, req.body.email, req.body.firstname, req.body.lastname, pass, res);
