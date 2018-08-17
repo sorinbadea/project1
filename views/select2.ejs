@@ -177,7 +177,7 @@ textarea {
     resize: none;
 }
 
-.modal-surface {
+.header_text {
 }
 
 
@@ -206,12 +206,12 @@ textarea {
        <!-- The Modal -->
        <div id="myModal" class="modal">
          <!-- Modal content -->
-         <div id="modal-space" class="modal-content">
+         <div class="modal-content">
             <span class="close">close</span>
             <span class="save">save</span>
-             <div id="modal-surface"> 
-               <textarea>Some text...</textarea>
-             </div>
+            <div id="header_text">
+               <textarea id="tittle_textarea">Some text...</textarea>
+            </div> 
          </div>
        </div>
     </div>
@@ -255,15 +255,16 @@ span_save.onclick = function() {
    var xhttp = new XMLHttpRequest();
    xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-         document.getElementById("modal-surface").innerHTML =
-         this.responseText; 
-      } else {
-         document.getElementById("modal-surface").innerHTML =
-         'Ups..., an error pccured on server side'; 
+         var response=this.responseText;
+         if (response.localCompare("MESSAGE_SAVED:OK")!=0) {
+            document.getElementById("header_text").innerHTML =
+            "Ups..., the header could not be saved.";  
+         }
       }
    };
-   xhttp.open("GET", "http://localhost:8081/edit-header", true);
-   xhttp.send(); 
+   xhttp.open("POST", "http://localhost:8081/edit_header", true);
+   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+   xhttp.send("tittle="+document.getElementById("tittle_textarea").value);
 }
 //action on close button
 span_close.onclick = function() {
