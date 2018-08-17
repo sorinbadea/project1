@@ -77,7 +77,7 @@ body {margin:0; font-family: 'ABeeZee'}
 
 img.img-container {
    float:left;
-   width:22%;
+   width:18%;
    border-color:gray;
    border-style:dotted;
    border-color:#444;
@@ -177,6 +177,18 @@ textarea {
     resize: none;
 }
 
+.textarea_text {
+    width: 100%;
+    height: 350px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
+
 .header_text {
 }
 
@@ -202,9 +214,9 @@ textarea {
   <div class="blog-text-site2">
     <h2>Some nice header here</h2>
     <div class=select>
-       <button id="myBtn">Edit</button>
+       <button id="btn-header">Edit</button>
        <!-- The Modal -->
-       <div id="myModal" class="modal">
+       <div id="modal-header" class="modal">
          <!-- Modal content -->
          <div class="modal-content">
             <span class="close">close</span>
@@ -219,20 +231,20 @@ textarea {
   <div class="text-container">
       <a href="#"><img class="img-container" src="images/img_avatar.png"></a>
    </div>
+    <h2>Please edit the article text here</h2>
     Lorem ipsum dolor sit amet, quis noster corpora quo at, cum an dicit offendit principes, ei probo mucius adolescens sed. No oblique feugiat vim, adhuc laboramus reformidans nam ne. Pri definiebas complectitur eu, facilis tacimates mediocrem ei eum. Vel quaeque denique ut, id nec alia eirmod omittantur. Ei nec petentium scribentur. Cu his fabellas maiestatis philosophia, agam recusabo et pri, no nec tale erroribus inciderint. Vix an accusam eloquentiam necessitatibus, ridens alterum intellegam id sit. Iusto dolorem civibus in sea. An pro quidam legimus maiestatis. Eam affert tation torquatos ex, pri velit causae saperet eu. No verterem tractatos scripserit ius.
-In omnis equidem dissentiunt sea, electram consulatu reprehendunt nam ex, in eam iuvaret similique rationibus. No ridens oblique constituto vel. Et eum nullam similique, ferri atomorum periculis ad qui. Ut appareat postulant has, putent essent ei eum. Cibo congue vim ne, eam meliore senserit cu. Ius te quodsi offendit, his an admodum adipiscing argumentum, vim alienum ullamcorper id. An his lorem quaestio petentium, integre adipisci definiebas his ex. Eu deserunt assueverit philosophia qui, eam ea habeo delicata. Cu nam odio fabulas pertinax, eu libris instructior his. Sit saperet omittantur et, movet sanctus phaedrum pro an. Lorem ipsum dolor sit amet, quis noster corpora quo at, cum an dicit offendit principes, ei probo mucius adolescens sed. No oblique feugiat vim, adhuc laboramus reformidans nam ne. Pri definiebas complectitur eu, facilis tacimates mediocrem ei eum. Vel quaeque denique ut, id nec alia eirmod omittantur. Ei nec petentium scribentur. Cu his fabellas maiestatis philosophia, agam recusabo et pri, no nec tale erroribus inciderint. Vix an accusam eloquentiam necessitatibus, ridens alterum intellegam id sit. Iusto dolorem civibus in sea. An pro quidam legimus maiestatis. Eam affert tation torquatos ex, pri velit causae saperet eu. No verterem tractatos scripserit ius.
-In omnis equidem dissentiunt sea, electram consulatu reprehendunt nam ex, in eam iuvaret similique rationibus. No ridens oblique constituto vel. Et eum nullam similique, ferri atomorum periculis ad qui. Ut appareat postulant has, putent essent ei eum. Cibo congue vim ne, eam meliore senserit cu. Ius te quodsi offendit, his an admodum adipiscing argumentum, vim alienum ullamcorper id. An his lorem quaestio petentium, integre adipisci definiebas his ex. Eu deserunt assueverit philosophia qui, eam ea habeo delicata. Cu nam odio fabulas pertinax, eu libris instructior his. Sit saperet omittantur et, movet sanctus phaedrum pro an. Quod dolorem vituperata et sed.
-Duo at alia ocurreret torquatos, alia repudiare eu eum. In sit legere ridens fabulas, appetere efficiantur eum an, nihil torquatos concludaturque an mel. In idque eloquentiam nam. In sea dictas fabulas accumsan.Lorem ipsum dolor sit amet, quis noster corpora quo at, cum an dicit offendit principes, ei probo mucius adolescens sed.In omnis equidem dissentiunt sea, electram consulatu reprehendunt nam ex, in eam iuvaret similique rationibus. No ridens oblique constituto vel. Et eum nullam similique, ferri atomorum periculis ad qui. Ut appareat postulant has, putent essent ei eum. Cibo congue vim ne, eam meliore senserit cu. Ius te quodsi offendit, his an admodum adipiscing argumentum, vim alienum ullamcorper id. An his lorem quaestio petentium, integre adipisci definiebas his ex. Eu deserunt assueverit philosophia qui, eam ea habeo delicata. Cu nam odio fabulas pertinax, eu libris instructior his. Sit saperet omittantur et, movet sanctus phaedrum pro an. Quod dolorem vituperata et sed.
 Duo at alia ocurreret torquatos, alia repudiare eu eum. In sit legere ridens fabulas, appetere efficiantur eum an, nihil torquatos concludaturque an mel. In idque eloquentiam nam. In sea dictas fabulas accumsan.Lorem ipsum dolor sit amet, quis noster corpora quo at, cum an dicit offendit principes, ei probo mucius adolescens sed.
   <div class=select>
-    <button id="myBtn2">Edit</button>
+    <button id="btn-text">Edit</button>
     <!-- The Modal -->
-    <div id="myModal2" class="modal">
+    <div id="modal-text" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
          <span class="close">close</span>
          <span class="save">save</span>
-           <textarea>Some text...</textarea>
+         <div id="text_text">
+            <textarea class="textarea_text" id="text_textarea">Some text...</textarea>
+         </div>
       </div>
     </div>
   </div>
@@ -240,25 +252,35 @@ Duo at alia ocurreret torquatos, alia repudiare eu eum. In sit legere ridens fab
 
 <script>
 // Get the modal
-var modal = document.getElementById('myModal');
+var modal_header = document.getElementById('modal-header');
+var modal_text = document.getElementById('modal-text');
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+var btn_header = document.getElementById("btn-header");
+var btn_text = document.getElementById("btn-text");
 // Get the <span> element that closes the modal
-var span_close = document.getElementsByClassName("close")[0];
-var span_save = document.getElementsByClassName("save")[0];
+var span_header_close = document.getElementsByClassName("close")[0];
+var span_header_save = document.getElementsByClassName("save")[0];
+var span_text_close = document.getElementsByClassName("close")[1];
+var span_text_save = document.getElementsByClassName("save")[1];
+
 // When the user clicks the button, open the modal 
-btn.onclick = function() {
-    modal.style.display = "block";
+btn_header.onclick = function() {
+    modal_header.style.display = "block";
 }
+btn_text.onclick = function() {
+    modal_text.style.display = "block";
+}
+
 //When the user clicks on "save", save the modal
-span_save.onclick = function() {
+span_header_save.onclick = function() {
    var xhttp = new XMLHttpRequest();
    xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
          var response=this.responseText;
-         if (response.localCompare("MESSAGE_SAVED:OK")!=0) {
+         var res=response.localCompare("MESSAGE_SAVED:OK");
+         if (res!=0) {
             document.getElementById("header_text").innerHTML =
-            "Ups..., the header could not be saved.";  
+            "Ups...,the header could not be saved.";  
          }
       }
    };
@@ -266,14 +288,23 @@ span_save.onclick = function() {
    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
    xhttp.send("tittle="+document.getElementById("tittle_textarea").value);
 }
-//action on close button
-span_close.onclick = function() {
-   modal.style.display = "none";
+
+//actions on close button
+span_header_close.onclick = function() {
+   modal_header.style.display = "none";
 }
+span_text_close.onclick = function() {
+   modal_text.style.display = "none";
+}
+
+
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+    if (event.target == modal_header) {
+        modal_header.style.display = "none";
+    }
+    if (event.target == modal_text) {
+        modal_text.style.display = "none";
     }
 }
 </script>
