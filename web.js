@@ -110,7 +110,6 @@ app.get('/edit-header', function (req, res) {
    if (is_auth) {
      console.log('web.js, edit-header, auth token:' + is_auth)
      res.setHeader('Content-Type','text/html')
-     //res.write('<div id="modal-surface"><textarea>Coucou</textarea></div>')
      res.write('<textarea>Coucou</textarea>')
      res.end()
    }else {
