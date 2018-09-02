@@ -188,6 +188,35 @@ function insert_article_done(web_res) {
 }
 
 /*
+ * insert a record in "articles" collection
+ */
+exports.update_article=function( email, tittle, text, web_res, callback ) {
+    mongoclient.connect(url, function(err,db) {
+       if(err)
+           throw(err);
+       var dbo = db.db(db_name);
+       console.log('connected');
+       var key_obj={email: email};
+       var update_obj = { 
+              $set: {article_tittle:tittle,
+              article_text:text,
+              article_data: new Date() } 
+           };
+       dbo.collection(articles).updateOne(key_obj, update_obj, function(err, res) {
+          if (err)
+             throw err;
+          db.close();
+          callback(web_res);
+      });
+   });
+}
+
+exports.update_article_done=function(web_res) {
+   console.log("collection articles, 1 item updated");
+}
+
+
+/*
  Update the last login field
 */
 update_last_login=function(callback, email) {

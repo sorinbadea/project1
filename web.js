@@ -101,14 +101,20 @@ app.get('/signup', function (req, res) {
    }
 });
 
-//when the user edit the header text
+/*
+ * when the user save the header text
+ */
 app.post('/edit_header', function (req, res) {
-   var is_auth = req.cookies.email
+   var email_auth = req.cookies.email
    var first_name = req.cookies.first_name
    var last_name = req.cookies.last_name
    var last_login = req.cookies.last_login
-   if (is_auth) {
-     console.log('web.js, edit-header, auth token:' + is_auth)
+   if (email_auth) {
+     /*
+      * save the header text
+      */
+     dbi.update_article(email_auth, req.body.tittle, 'None', res, dbi.update_article_done);
+     console.log('web.js, edit-header, auth token:' + email_auth)
      console.log('web.js, edit-header, tittle:' + req.body.tittle)
      res.setHeader('Content-Type','text/html')
      res.write('MESSAGE_SAVED:OK')
