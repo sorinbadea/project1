@@ -6,17 +6,18 @@ var record = undefined;
 //constants
 const users = "users"
 const db_name = "MongoDB";
+const articles = "articles";
 
 /*
- * find all from "users" collection
+ * find all from a collection
  */
-exports.find_all_users = function(callback) {
+exports.find_all=function(collection, callback) {
    mongoclient.connect(url, function(err,db) {
    if(err)
         throw(err);
    var dbo = db.db(db_name);
    console.log('connected');
-   dbo.collection(users).find({}).toArray(function(err, record) {
+   dbo.collection(collection).find({}).toArray(function(err, record) {
       if (err) 
           throw err;
        db.close()
@@ -25,8 +26,25 @@ exports.find_all_users = function(callback) {
   });
 };
 
-exports.do_get_all_users = function(result) {
+exports.do_display_all=function(result) {
    console.log(result)
+}
+
+/*
+ * drop a collection
+ */
+exports.drop_collection=function(collection) {
+   mongoclient.connect(url, function(err, db) {
+   if (err) throw err;
+   var dbo = db.db(db_name);
+   dbo.collection(collection).drop(function(err, delOK) {
+       if (err) 
+	   throw err;
+       if (delOK) 
+	   console.log("Collection deleted");
+       db.close();
+       });
+   }); 
 }
 
 /*
@@ -91,11 +109,11 @@ exports.insert_a_user= function(callback, email, first_name, last_name, pass, re
       console.log("looking for:"+email);
       dbo.collection(users).find( { email:email } ).toArray(function(err, record) {
           if (err) {
-	      throw err;
+	     throw err;
           }
           db.close();
           if (record.length == 0) {
-              callback(email, first_name, last_name, pass, res);
+             callback(email, first_name, last_name, pass, res);
           }
           else {
              console.log('User already exists!')
@@ -135,8 +153,38 @@ insert_db=function( email, first_name, last_name, pass, web_res ) {
            web_res.cookie('last_name',last_name);
            web_res.cookie('last_login',new Date());
            web_res.render('auth_ok.ejs', {fullname:first_name +' '+ last_name, lastlogin:new Date()});
+           /*
+	    * create the first record in article collection
+	    */
+           default_article(email,'None','None','None',insert_article_done);
       });
    });
+}
+
+/*
+ * insert a record in "articles" collection
+ */
+function default_article( email, tittle, text, web_res, callback ) {
+    mongoclient.connect(url, function(err,db) {
+       if(err)
+           throw(err);
+       var dbo = db.db(db_name);
+       console.log('connected');
+       var myobj = {email: email,
+                article_tittle:tittle,
+                article_text:text,
+                article_data: new Date()};
+       dbo.collection(articles).insertOne(myobj, function(err, res) {
+          if (err)
+             throw err;
+          db.close();
+          callback(web_res);
+      });
+   });
+}
+
+function insert_article_done(web_res) {
+   console.log("collection articles, 1 item inserted");
 }
 
 /*
@@ -151,7 +199,7 @@ update_last_login=function(callback, email) {
       var new_values = { $set: { lastlogin: new Date() } };
       dbo.collection(users).updateOne(query, new_values, (function(err, obj) {
          if (err)
-             throw err;
+            throw err;
          db.close();
          callback("last login updated")
       }));
